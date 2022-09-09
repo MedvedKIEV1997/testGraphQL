@@ -6,48 +6,48 @@ const cors = require('cors');
 const employees = [
     {
         name: 'Doug Lime',
-        controls: [2, 3],
-        id: 1
+        id: 1,
+        occupation: 'Owner'
     },
     {
         name: 'Lin Cheng',
-        controls: [4, 5, 6],
-        id: 2
+        id: 2,
+        occupation: 'Manager'
     },
     {
         name: 'Bob Welp',
-        controls: [7, 8, 9],
-        id: 3
+        id: 3,
+        occupation: 'Manager'
     },
     {
         name: 'Dakota Stein',
-        controls: [],
-        id: 4
+        id: 4,
+        occupation: 'Engineer'
     },
     {
         name: 'Mongo K',
-        controls: [],
-        id: 5
+        id: 5,
+        occupation: 'Engineer'
     },
     {
         name: 'Dew Dong',
-        controls: [],
-        id: 6
+        id: 6,
+        occupation: 'Engineer'
     },
     {
         name: 'Mort Dog',
-        controls: [],
-        id: 7
+        id: 7,
+        occupation: 'Engineer'
     },
     {
         name: 'Forman Go',
-        controls: [],
-        id: 8
+        id: 8,
+        occupation: 'Engineer'
     },
     {
         name: 'Dew Kelg',
-        controls: [],
-        id: 9
+        id: 9,
+        occupation: 'Engineer'
     }
 ];
 
@@ -55,32 +55,31 @@ const schema = buildSchema(`
     
   
     type Employee {
-        id: ID
+        id: Int
         name: String
-        controls: [Int]
+        occupation: String
     }
 
     input NewEmployee {
-        id: ID
+        id: Int
         name: String!
-        controls: [Int]
+        occupation: String!
     }
 
     type Query {
         getAllEmployees: [Employee]
-        getEmployee(id: ID): Employee
+        getEmployee(id: Int): Employee
     }
 
     type Mutation {
         createEmployee(input: NewEmployee): Employee
     }
 `);
+
 const createEmployee = (input) => {
     const id = employees[employees.length - 1].id + 1;
-    const controls = input.controls || [];
     return {
         id,
-        controls,
         ...input
     };
 };
