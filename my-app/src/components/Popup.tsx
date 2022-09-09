@@ -14,7 +14,7 @@ import {
     TextField
 } from '@mui/material';
 
-import { CREATE_NEW_EMPLOYEE } from './gql';
+import { CREATE_NEW_EMPLOYEE } from '../gql';
 
 type PopupProps = {
     open: boolean;

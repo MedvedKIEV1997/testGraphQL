@@ -18,12 +18,12 @@ import {
 import { Paper, Button } from '@mui/material';
 import { useQuery } from '@apollo/client';
 
-import { GET_ALL_EMPLOYEES } from './gql';
-import Popup from './Popup';
+import { GET_ALL_EMPLOYEES } from '../gql';
+import { Popup } from './index';
 
 // Grid component is temporarily bugged in ts
 
-const App = () => {
+const EmployeeTable = () => {
     const { data, loading, refetch } = useQuery(GET_ALL_EMPLOYEES);
     const [employees, setEmployees] = useState([]);
     const [open, setOpen] = useState(false);
@@ -70,4 +70,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default EmployeeTable;
